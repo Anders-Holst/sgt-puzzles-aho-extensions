@@ -2,9 +2,9 @@
 
 <table>
 <tr>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/identifier1.png"></td>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/identifier2.png"></td>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/identifier3.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/identifier1.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/identifier2.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/identifier3.png"></td>
 </tr>
 </table>
 

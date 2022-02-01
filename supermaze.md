@@ -2,12 +2,12 @@
 
 <table>
 <tr>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze1.png"></td>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze2.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/supermaze1.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/supermaze2.png"></td>
 </tr>
 <tr>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze3.png"></td>
-<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze4.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/supermaze3.png"></td>
+<td><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/supermaze4.png"></td>
 </tr>
 </table>
 

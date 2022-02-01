@@ -1,6 +1,6 @@
 # Factorcross
 
-![](https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/factorcross.png)
+![](https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/factorcross.png)
 
 ### Fill the board so that the numbers' products match the clues.
 

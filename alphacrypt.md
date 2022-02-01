@@ -1,6 +1,6 @@
 # Alphacrypt
 
-![](https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/alphacrypt.png)
+![](https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/alphacrypt.png)
 
 ### Assign a number to each letter such that the equations match.
 

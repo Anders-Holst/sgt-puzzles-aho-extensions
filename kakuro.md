@@ -1,15 +1,17 @@
 # Kakuro
 
-![](https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/kakuro.png)
+![](https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/kakuro.png)
 
 ### Fill the board so that unique numbers sum up to each clue
 
 Author: Anders Holst (anders.holst@ri.se)
 
-The Kakuro game has a grid like a crossword, which should be filled
-with numbers such that the sum of them match the horizontal and
-vertical clues, and the same number must not occur more than once in
-each sum.
+This is the traditional Kakuro game, examples of which can be found in
+several places. Free and good generators are not easy to find though,
+so I had to write one myself. The puzzle has a grid like a crossword,
+which should be filled with numbers such that the sum of them match
+the horizontal and vertical clues, and the same number must not occur
+more than once in each sum.
 
 ### Kakuro controls
 
@@ -56,12 +58,13 @@ left and the top). The grid size can be between 3 and 12.
 *Variant*
 
 In addition to the Normal variant, there are two variations that
-can be selected. With Odd/even restriction, every other square must be
+can be selected: With *Odd/even restriction*, every other square must be
 odd (lighter background shade) and every other even (darker
-shade). With the variant No same combinations, no two sums can be made
+shade). With the variant *No same combinations*, no two sums can be made
 up of the same set of numbers. The solution is selected so that this
 condition will have to be explicitly considered to be able to solve
-the puzzle.
+the puzzle. This variant is highly recommended! It makes the
+puzzle more interesting by adding non-local constraints to it.
 
 *Difficulty*
 
