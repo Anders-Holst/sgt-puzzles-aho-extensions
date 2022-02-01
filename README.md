@@ -1,7 +1,7 @@
 sgt-puzzles-aho-extensions
 ==========================
 
-### Anders Holst' extensions to Simon Tatham's puzzle collection
+### Anders Holst's extensions to Simon Tatham's puzzle collection
 
 This package contains a number of puzzles I have written for [Simon Tatham's Portable Puzzle Collection](http://www.chiark.greenend.org.uk/~sgtatham/puzzles/) but which have not made it into the official package. Nevertheless, they are fully playable and complete. 
 
@@ -12,23 +12,23 @@ Click on a puzzle below for the full description of it.
 
 <table>
 <tr>
-<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/kakuro.md">Kakuro</a></b><br/>Fill the board so that unique numbers sum up to each clue</td>
-<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/factorcross.md">Factorcross</a></b><br/>Fill the board so that the numbers' products match the clues</td>
-<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/alphacrypt.md">Alphacrypt</a></b><br/>Assign a number to each letter such that the equations match</td>
+<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/kakuro.md">Kakuro</a></b><br/>Fill the board so that unique numbers sum up to each clue</td>
+<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/factorcross.md">Factorcross</a></b><br/>Fill the board so that the numbers' products match the clues</td>
+<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/alphacrypt.md">Alphacrypt</a></b><br/>Assign a number to each letter such that the equations match</td>
 </tr>
 <tr>
-<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/kakuro.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/kakuro.png"></a></td>
-<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/factorcross.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/factorcross.png"></a></td>
-<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/alphacrypt.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/alphacrypt.png"></a></td>
+<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/kakuro.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/kakuro.png"></a></td>
+<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/factorcross.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/factorcross.png"></a></td>
+<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/alphacrypt.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/alphacrypt.png"></a></td>
 </tr>
 <tr>
-<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/identifier.md">Identifier</a></b><br/>Identify the forms and positions of shapes in a board</td>
-<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze.md">Supermaze</a></b><br/>Find your way through the Supermazes, i.e mazes with states</td>
+<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/identifier.md">Identifier</a></b><br/>Identify the forms and positions of shapes in a board</td>
+<td align="center"><b><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/supermaze.md">Supermaze</a></b><br/>Find your way through the Supermazes, i.e mazes with states</td>
 <td align="center"><b> </b></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/identifier.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/identifier3.png"></a></td>
-<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/supermaze2.png"></a></td>
+<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/identifier.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/identifier3.png"></a></td>
+<td><a href="https://github.com/Anders-Holst/sgt-puzzles-aho-extensions/blob/main/supermaze.md"><img src="https://raw.githubusercontent.com/Anders-Holst/sgt-puzzles-aho-extensions/main/supermaze2.png"></a></td>
 <td> </td>
 </tr>
 </table>
@@ -52,7 +52,7 @@ git clone git@github.com:Anders-Holst/sgt-puzzles-aho-extensions.git
 
 * If you have not done so already, also get the source code for the
   SGT Portable Puzzle Collection from
-  [the officialsite](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/).
+  [the official site](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/).
   Download it, unpack it, and move into the resulting directory.
 ```
 mv -f puzzles.tar.gz puzzles.tar.gz.old
@@ -76,7 +76,7 @@ sed 's|add_subdirectory(unfinished)|add_subdirectory(unfinished)\nadd_subdirecto
 ```
 
 * You also need to apply a small modification to one file in the SGT
-  code: Remove the word "static" in fron of the function `midend_undo`
+  code: Remove the word "static" in front of the function `midend_undo`
   in the file "midend.c". This is needed to be able to use multi-digit
   numbers. For example, you can do this by the commands:
 ```
