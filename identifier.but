@@ -20,6 +20,10 @@ horizontally on black squares. Diagonal touching is not enough to be
 connected. Different shapes (of same or different form) placed on the
 board may not touch each other, not even diagonally.
 
+This variant of Battleships were invented by me and my brother when we
+were young and had some time to kill during a rather event-less summer
+vacation.
+
 \H{identifier-parameters} \I{parameters, for Identifier}Identifier parameters
 
 There are three game modes: 
@@ -70,9 +74,9 @@ mark where your ships are on the top board that the computer will
 guess on. On the lower board you can use it to mark the squares you
 are certain of so far.
 
-To guess on a square in the lower board you use the return key. Also,
+To guess on a square in the lower board you use the Return key. Also,
 to answer a computer guess in the upper board, make sure it is
-correctly marked white or black and then press return.
+correctly marked white or black and then press Return.
 
 With the numbers 1-6 you can also give the selected square an auxilary
 color. 0 erases that color. The auxilary color has no meaning in the
@@ -93,8 +97,8 @@ anyone to beat.)
 Duel mode is most complex, so it s described here. Much in the other
 modes will then be similar. In Duel mode (but not the others) you have
 to prepare your own board, for the computer to guess. Prepare it in
-the upper boars, either using white and black marks (black for the
-shape squares and white outside), or the colors 1 - 6 or arbitrary
+the upper board, either using white and black marks (black for the
+shape squares and white outside), or the colors 1 - 6 of arbitrary
 meaning, or on a paper on the side if you don't trust the program. At
 the bottom of the window, the shape configuration to use is shown. For
 Unknown fleet type, it only says how many copies of shapes of how many
@@ -112,7 +116,7 @@ press Return. It will then be revealed as black (hit) or white (miss),
 and your turn count increases.
 
 Then it is the computer's turn. One square in the upper board will be
-highlighted. ake sure it has the right black or white mark on it (with
+highlighted. Make sure it has the right black or white mark on it (with
 the left or right mouse button, or the space bar), and then press
 Return. The computer's turn count increases.
 
@@ -140,8 +144,8 @@ very efficient optimizer which is hard to beat). As soon as you are
 sure of the solution, make sure all the black squares are marked, and
 press Guess.
 
-Puzzle mode is the most tricky, but at the same time the least
-controls.  You get a board with some white squares revealed, and have
+Puzzle mode is the most tricky, but at the same time has the least
+controls. You get a board with some white squares revealed, and have
 to figure out the only way to fit in the shapes of the given
 specification on the board.  You can not ask for specific squares. You
 have to figure it all out, mark all the shape squares with black, and

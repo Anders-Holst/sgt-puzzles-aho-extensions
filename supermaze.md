@@ -40,16 +40,16 @@ moving.
 freely inspired by Robert Abbot's maze "Where are the cows" (search
 for it on the web), in which you have two pencils pointing at
 different rooms in a maze, and at each room there are instructions on
-where you may move that pencil, depending on \e{the other pencil's
-position}. It is such a fantastic and challenging maze that I can
+where you may move that pencil, depending on *the other pencil's
+position*. It is such a fantastic and challenging maze that I can
 recommend it for everyone to try. I wanted to see if I could
 automatically generate a stylized version of that type of maze. I
 could, it turned out, although it may not be as much fun as the
-original: There are two balls that needs to be moved through the maze,
+original: There are two balls that need to be moved through the maze,
 but the doors depend on in which rooms the balls are. It is
 deterministic, but may seem quite perplexing. (Each room has an
 xor-mask to change the status of the doors.) Also note that it is a
-quite valid (and sometimes necessary move) to move one ball back out
+quite valid (and sometimes necessary) move, to move one ball back out
 of the entrance, or back in from the exit, to enable the other ball to
 move. It is rather difficult but quite possible to solve. (Note that
 effectively this is a four-dimensional maze, since the "state" depends
@@ -61,8 +61,9 @@ is on the lowest floor and the exit on the highest floor. You only
 see one floor at a time. No perplexing state changes.
 
 *Floors*: Similar to 3D, but instead of stairs there are "direct
-portals" between different floors. Each floor has its own color, which
-is also shown in the portals that go there.
+portals" between different floors. (Or are they trampolines?) Each
+floor has its own color, which is also shown in the portals that go
+there.
 
 *Keys*: Here there are doors of different colors, and you need a key
 of the corresponding color to go through. Once you find a key it can

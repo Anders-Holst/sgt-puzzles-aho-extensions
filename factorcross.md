@@ -18,7 +18,7 @@ also contained some tricks for mental arithmetic, such as how to check
 divisibility with different numbers. I have never seen this puzzle
 anywhere else. But if you are not scared of numbers and math, it is
 quite enjoyable. And as a side effect, you will quickly learn how to
-do prime factorization of large numbers.
+do prime factorization of large numbers in the head.
 
 ### Factorcross controls
 
