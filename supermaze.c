@@ -2166,7 +2166,7 @@ static SuperMaze* makesupermaze(SmPowerRoom** states, const game_params *params,
 
 static int countsolutionstates(SmPowerRoom** states, const game_params *params, char** aux)
 {
-  int max, par, ok, solcount;
+  int par, ok, solcount;
   int i, j;
   char* p;
   char* tmpaux;
@@ -2182,7 +2182,7 @@ static int countsolutionstates(SmPowerRoom** states, const game_params *params, 
   for (i=0; i<npool; i++) {
     pool[i] = states[num-npool+i];
   }
-  max = calcdistance(pool, npool, ndoors);
+  calcdistance(pool, npool, ndoors);
   solcount = states[0]->dist;
   if (solcount == -1) {
     *aux = 0;
@@ -2274,7 +2274,7 @@ static int countsolutionstates(SmPowerRoom** states, const game_params *params, 
 
   for (i=0; i<num; i++)
     states[i]->dist = -1;
-  max = calcdistance(pool, npool, ndoors);
+  calcdistance(pool, npool, ndoors);
   /* printf("Steps: %d  Longest: %d   Sol: %s\n", solcount, max, tmpaux+1); */
   sfree(tmpaux);
 
@@ -3846,7 +3846,9 @@ static void draw_animation(drawing *dr, game_drawstate *ds, const game_state *st
       }
     }
   } else if (style == Keys) {
-    colnr = state->clues->roomvector[ds->lastpos[1]*sz + ds->lastpos[0]];
+    colnr = (ds->lastpos[0] >= 0 && ds->lastpos[0] < sz ?
+             state->clues->roomvector[ds->lastpos[1]*sz + ds->lastpos[0]] :
+             -1);
     if (colnr != -1) {
       x = COORDX(ds->lastpos[0], tilesize);
       y = COORDY(ds->lastpos[1], tilesize);
@@ -3865,7 +3867,9 @@ static void draw_animation(drawing *dr, game_drawstate *ds, const game_state *st
       }
     }
   } else if (style == Levers) {
-    colnr = state->clues->roomvector[ds->lastpos[1]*sz + ds->lastpos[0]];
+    colnr = (ds->lastpos[0] >= 0 && ds->lastpos[0] < sz ?
+             state->clues->roomvector[ds->lastpos[1]*sz + ds->lastpos[0]] :
+             -1);
     if (colnr != -1) {
       x = COORDX(ds->lastpos[0], tilesize);
       y = COORDY(ds->lastpos[1], tilesize);
@@ -3905,7 +3909,9 @@ static void draw_animation(drawing *dr, game_drawstate *ds, const game_state *st
         draw_ballkeys(dr, xp, yp, tilesize, ds->pos[3] & (((1<<state->par->keys)-1)<<state->par->levers), 5 - state->par->levers);
       }
     } else {
-      colnr = state->clues->roomvector[ds->lastpos[2]*sz*sz + ds->lastpos[1]*sz + ds->lastpos[0]];
+      colnr = (ds->lastpos[0] >= 0 && ds->lastpos[0] < sz ?
+               state->clues->roomvector[ds->lastpos[2]*sz*sz + ds->lastpos[1]*sz + ds->lastpos[0]] :
+               -1);
       if (colnr-4 >= state->par->levers) {
         x = COORDX(ds->lastpos[0], tilesize);
         y = COORDY(ds->lastpos[1], tilesize);
