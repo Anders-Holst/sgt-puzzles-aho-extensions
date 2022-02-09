@@ -1684,7 +1684,10 @@ static pair *simple_evolve(random_state *rs, const game_params *par, char** answ
           vec2 = randomize_answer(kb, rs);
         else {
           import_answer(kb, vec1);
+          vec2 = 0;
           do {
+            if (vec2)
+              sfree(vec2);
             vec2 = mutate_answer(kb, rs, MUTATION_RATE, kb->phase == 1 ? 0 : accvec1);
           } while (!strcmp(vec1, vec2));
         }
@@ -1727,6 +1730,7 @@ static pair *simple_evolve(random_state *rs, const game_params *par, char** answ
     *answer = dupstr(kb->candidate);
     *oddeven = (par->oddeven_mode ? kb->oddeven : 0);
     sfree(vec1);
+    sfree(accvec1);
     delete_KakuroBoard(kb);
     return ret;
 }

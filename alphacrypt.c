@@ -885,8 +885,12 @@ void print_board(EquationBoard* eqb)
 static void free_board(EquationBoard* eqb)
 {
   int i, n = eqb->par->size;
-  for (i=0; i<n; i++)
+  for (i=0; i<n; i++) {
+    if (eqb->eqs[i]->refs)
+      sfree(eqb->eqs[i]->refs);
     sfree(eqb->eqs[i]);
+  }
+  sfree(eqb->eqs);
   sfree(eqb);
 }
 
@@ -1201,6 +1205,7 @@ static char *solve_game(const game_state *state, const game_state *currstate,
     char* ans = snewn(3*state->par->size+2, char);
     *ans = 's';
     sol = count_solutions(eqb, 1000, &diff, ans + 1);
+    free_board(eqb);
     if (sol>0) {
       return ans;
     } else {
