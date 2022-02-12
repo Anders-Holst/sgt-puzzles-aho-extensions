@@ -2494,8 +2494,8 @@ static game_state *execute_move(const game_state *from0, const char *move)
 	 */
       ret = dup_game(from);
       if (from->par->oddeven_mode) {
-        long oddmask = ((1L<<from->par->max)/3) << 1;
-        long evenmask = ((2L<<from->par->max)/3) << 1;
+        long oddmask = (from->par->max % 2 ? (2L<<from->par->max)/3 : (1L<<from->par->max)/3) << 1;
+        long evenmask = (from->par->max % 2 ? (1L<<from->par->max)/3 : (2L<<from->par->max)/3) << 1;
         for (x = 0; x < sz; x++)
           for (y = 0; y < sz; y++) {
             if (ret->grid[y*sz+x] == -1)
