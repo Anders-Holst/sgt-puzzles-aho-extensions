@@ -1122,6 +1122,7 @@ int dict_statistics_calc_entropy(DictStatistics* stat, int climit)
             continue;
           for (int jk=0; jk<n; jk++)
             if (statvec[curr]->numposs[j0+jk] >= stat->conf->mult[k]) {
+              char px;
               Shape* shape = ShapeDictGet(stat->dict, stat->conf->lev[k], jk);
               for (int i=0; i<statvec[curr]->bsize; i++)
                 bpos[i] = bneg[i] = 0;
@@ -1129,9 +1130,10 @@ int dict_statistics_calc_entropy(DictStatistics* stat, int climit)
               tmp = over(statvec[curr]->numposs[j0+jk], stat->conf->mult[k]);
               norm += tmp;
               for (int i=0; i<statvec[curr]->bsize; i++) {
+                px = ShapePix(stat->board, i%stat->board->width, i/stat->board->width, 1);
                 prob[i] += tmp*imin(statvec[curr]->numposs[j0+jk], stat->conf->mult[k]*bpos[i])/((double)statvec[curr]->numposs[j0+jk]);
                 sumpos[i] += (bpos[i]==0 ? 0 : over(statvec[curr]->numposs[j0+jk] - bneg[i], stat->conf->mult[k]));
-                sumneg[i] += over(statvec[curr]->numposs[j0+jk] - bpos[i], stat->conf->mult[k]);
+                sumneg[i] += (px==ID_ON ? 0 : over(statvec[curr]->numposs[j0+jk] - bpos[i], stat->conf->mult[k]));
               }
             }
         }
@@ -1204,6 +1206,7 @@ void dict_statistics_pick_best_entropy(DictStatistics* stat, Shape* solboard, ch
   double maxentr;
   int cntmaxentr, pick;
   maxentr = 0.0;
+  cntmaxentr = 0;
   if (solboard && solval) { /* Solitaire game - only consider OFF or ON squares */
     for (int i=0; i<stat->bsize; i++) {
       if (ShapePix(solboard, i%solboard->width, i/solboard->width, 1) != solval)
