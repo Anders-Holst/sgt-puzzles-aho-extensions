@@ -2043,15 +2043,6 @@ static void free_ui(game_ui *ui)
     sfree(ui);
 }
 
-static char *encode_ui(const game_ui *ui)
-{
-    return NULL;
-}
-
-static void decode_ui(game_ui *ui, const char *encoding)
-{
-}
-
 static void game_changed_state(game_ui *ui, const game_state *oldstate,
                                const game_state *newstate)
 {
@@ -2101,16 +2092,16 @@ static char* make_move_string(const game_state *state, game_ui *ui, int n)
     int odd = ((state->clues->oddeven == 2 ? 0 : 1) + ui->hx + ui->hy)%2;
     if (odd ^ (n%2))
 #ifdef MULTIDIGIT
-      return (ui->pending ? dupstr("O") : UI_UPDATE);
+      return (ui->pending ? dupstr("O") : MOVE_UI_UPDATE);
 #else
-      return UI_UPDATE;
+      return MOVE_UI_UPDATE;
 #endif /* MULTIDIGIT */
   }
   if (n != -1 && (n > state->par->max || n == 0))
 #ifdef MULTIDIGIT
-    return (ui->pending ? dupstr("O") : UI_UPDATE);
+    return (ui->pending ? dupstr("O") : MOVE_UI_UPDATE);
 #else
-    return UI_UPDATE;
+    return MOVE_UI_UPDATE;
 #endif /* MULTIDIGIT */
   sprintf(buf, "%c%d,%d,%d", (char)(ui->hpencil ? 'P' : 'R'), ui->hx, ui->hy, n);
   return dupstr(buf);
@@ -2207,7 +2198,7 @@ static char *interpret_move(const game_state *state, game_ui *ui, const game_dra
         abort_pending(state, ui);
       }
 #endif /* MULTIDIGIT */
-      move_cursor(button, &ui->hx, &ui->hy, sz, sz, 0);
+      move_cursor(button, &ui->hx, &ui->hy, sz, sz, 0, NULL);
       ui->hshow = ui->hcursor = 1;
       return retstr;
     }
@@ -2520,7 +2511,7 @@ static game_state *execute_move(const game_state *from0, const char *move)
 #define SIZE(w) (((w)+1) * TILESIZE + 2*BORDER)
 
 static void game_compute_size(const game_params *params, int tilesize,
-			      int *x, int *y)
+			                  const game_ui *ui, int *x, int *y)
 {
     /* Ick: fake up `ds->tilesize' for macro expansion purposes */
     struct { int tilesize; } ads, *ds = &ads;
@@ -2901,14 +2892,6 @@ static bool game_timing_state(const game_state *state, game_ui *ui)
     return true;
 }
 
-static void game_print_size(const game_params *params, float *x, float *y)
-{
-}
-
-static void game_print(drawing *dr, const game_state *state, int tilesize)
-{
-}
-
 #ifdef COMBINED
 #define thegame kakuro
 #endif
@@ -2927,16 +2910,19 @@ const struct game thegame = {
     new_game_desc,
     validate_desc,
     new_game,
+    NULL, /* set_public_desc */
     dup_game,
     free_game,
     true, solve_game,
     false, game_can_format_as_text_now, game_text_format,
+    NULL, NULL, /* get_prefs, set_prefs */
     new_ui,
     free_ui,
-    encode_ui,
-    decode_ui,
+    NULL, /* encode_ui */
+    NULL, /* decode_ui */
     NULL,
     game_changed_state,
+    NULL,
     interpret_move,
     execute_move,
     PREFERRED_TILESIZE, game_compute_size, game_set_size,
@@ -2948,7 +2934,7 @@ const struct game thegame = {
     game_flash_length,
     NULL,
     game_status,
-    false, false, game_print_size, game_print,
+    false, false, NULL, NULL, /* print_size, print */
 #ifdef SHOWDIFF
     true,			       /* wants_statusbar */
 #else
