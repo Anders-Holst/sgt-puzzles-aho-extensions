@@ -2582,15 +2582,6 @@ static void free_ui(game_ui *ui)
     sfree(ui);
 }
 
-static char *encode_ui(const game_ui *ui)
-{
-    return NULL;
-}
-
-static void decode_ui(game_ui *ui, const char *encoding)
-{
-}
-
 static void game_changed_state(game_ui *ui, const game_state *oldstate,
                                const game_state *newstate)
 {
@@ -2904,7 +2895,7 @@ static char *interpret_move(const game_state *state, game_ui *ui, const game_dra
           sprintf(retstr, "T");
           return dupstr(retstr);
         } else         
-          return UI_UPDATE;
+          return MOVE_UI_UPDATE;
       }
       return NULL;
     } else if (button == RIGHT_BUTTON || button == CURSOR_SELECT2) {
@@ -2989,7 +2980,7 @@ static char *interpret_move(const game_state *state, game_ui *ui, const game_dra
       else if (tx >= sz-1 && ty == sz-1 && button == CURSOR_RIGHT)
         tx = sz;
       else if (!(button == CURSOR_UP && tx == -1) && !(button == CURSOR_DOWN && tx == sz))
-        move_cursor(button, &tx, &ty, sz, sz, 0);
+        move_cursor(button, &tx, &ty, sz, sz, 0, NULL);
       if ((tx != tx1 || ty != ty1) &&
           canmove(state, tx1, ty1, tx, ty, &dir)) {
         if (style == Tandem) {
@@ -3001,7 +2992,7 @@ static char *interpret_move(const game_state *state, game_ui *ui, const game_dra
           ui->tshow = 0, ui->tpos[0] = -1, ui->tpos[1] = -1;
         return dupstr(retstr);
       } else
-        return UI_UPDATE;
+        return MOVE_UI_UPDATE;
     }
 
     if ((button == 's' || button == 'S') && state->cheated && state->clues->sol) {
@@ -3110,7 +3101,7 @@ static game_state *execute_move(const game_state *from, const char *move)
  */
 
 static void game_compute_size(const game_params *params, int tilesize,
-			      int *x, int *y)
+			      const game_ui *ui, int *x, int *y)
 {
   *x = TOTSIZEX(params->size, tilesize);
   *y = TOTSIZEY(params->size, tilesize);
@@ -4129,14 +4120,6 @@ static bool game_timing_state(const game_state *state, game_ui *ui)
     return true;
 }
 
-static void game_print_size(const game_params *params, float *x, float *y)
-{
-}
-
-static void game_print(drawing *dr, const game_state *state, int tilesize)
-{
-}
-
 #ifdef COMBINED
 #define thegame supermaze
 #endif
@@ -4155,16 +4138,19 @@ const struct game thegame = {
     new_game_desc,
     validate_desc,
     new_game,
+    NULL, /* set_public_desc */
     dup_game,
     free_game,
     true, solve_game,
     false, game_can_format_as_text_now, game_text_format,
+    NULL, NULL, /* get_prefs, set_prefs */
     new_ui,
     free_ui,
-    encode_ui,
-    decode_ui,
+    NULL, /* encode_ui */
+    NULL, /* decode_ui */
     NULL,
     game_changed_state,
+    NULL,
     interpret_move,
     execute_move,
     PREFERRED_TILESIZE, 
@@ -4178,7 +4164,7 @@ const struct game thegame = {
     game_flash_length,
     NULL,
     game_status,
-    false, false, game_print_size, game_print,
+    false, false, NULL, NULL, /* print_size, print */
     false,			       /* wants_statusbar */
     false, game_timing_state,
     0,				       /* flags */

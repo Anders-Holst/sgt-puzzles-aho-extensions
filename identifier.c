@@ -2039,15 +2039,6 @@ static void free_ui(game_ui *ui)
     sfree(ui);
 }
 
-static char *encode_ui(const game_ui *ui)
-{
-    return NULL;
-}
-
-static void decode_ui(game_ui *ui, const char *encoding)
-{
-}
-
 static void game_changed_state(game_ui *ui, const game_state *oldstate,
                                const game_state *newstate)
 {
@@ -2077,7 +2068,7 @@ static char *interpret_move(const game_state *state, game_ui *ui, const game_dra
   int h = state->par->bheight;
   char pix;
   int tpanel, tx, ty;
-  char* retstr = UI_UPDATE;
+  char* retstr = MOVE_UI_UPDATE;
   char buf[20];
 
   button &= ~MOD_MASK;
@@ -2141,7 +2132,7 @@ static char *interpret_move(const game_state *state, game_ui *ui, const game_dra
   if (IS_CURSOR_MOVE(button)) {
     int np = (ds->yoffd >= 0 ? 2 : 1);
     int tmpy = ui->hy + (np - ui->hpanel) * h;
-    move_cursor(button, &ui->hx, &tmpy, w, np*h + 1, 0);
+    move_cursor(button, &ui->hx, &tmpy, w, np*h + 1, 0, NULL);
     ui->hy = tmpy % h;
     ui->hpanel = np - tmpy / h;
     ui->hshow = ui->hcursor = 1;
@@ -2360,7 +2351,7 @@ enum {
 
 
 static void game_compute_size(const game_params *params, int tilesize,
-			      int *x, int *y)
+			      const game_ui* ui, int *x, int *y)
 {
   int half = tilesize / 2;
   int grsz = tilesize / 32 + 1;
@@ -2710,15 +2701,6 @@ static bool game_timing_state(const game_state *state, game_ui *ui)
     return true;
 }
 
-static void game_print_size(const game_params *params, float *x, float *y)
-{
-}
-
-static void game_print(drawing *dr, const game_state *state, int tilesize)
-{
-}
-
-
 #ifdef COMBINED
 #define thegame identifier
 #endif
@@ -2737,16 +2719,19 @@ const struct game thegame = {
     new_game_desc,
     validate_desc,
     new_game,
+    NULL, /* set_public_desc */
     dup_game,
     free_game,
     true, solve_game,
     false, game_can_format_as_text_now, game_text_format,
+    NULL, NULL, /* get_prefs, set_prefs */
     new_ui,
     free_ui,
-    encode_ui,
-    decode_ui,
+    NULL, /* encode_ui */
+    NULL, /* decode_ui */
     NULL,
     game_changed_state,
+    NULL,
     interpret_move,
     execute_move,
     PREFERRED_TILESIZE, game_compute_size, game_set_size,
@@ -2758,7 +2743,7 @@ const struct game thegame = {
     game_flash_length,
     NULL,
     game_status,
-    false, false, game_print_size, game_print,
+    false, false, NULL, NULL, /* print_size, print */
     false,			       /* wants_statusbar */
     false, game_timing_state,
     0,				       /* flags */
